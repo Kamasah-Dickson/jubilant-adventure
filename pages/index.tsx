@@ -77,6 +77,7 @@ const Home = () => {
 						<input
 							{...register("search")}
 							type="text"
+							autoComplete="off"
 							id="search"
 							name="search"
 							placeholder="Men's clothing, jewelery,electronics..."

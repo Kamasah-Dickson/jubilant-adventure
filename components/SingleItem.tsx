@@ -14,9 +14,7 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 
 	return (
 		<div className={styles.singleCard}>
-			<div className={styles.singleCardStyle}>
-				<Image src={product.image} width={350} height={350} alt="" />
-			</div>
+			<Image src={product.image} priority width={350} height={350} alt="" />
 			<div
 				style={{
 					padding: "2rem",

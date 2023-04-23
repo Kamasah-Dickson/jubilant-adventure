@@ -54,7 +54,7 @@ function AppContext({ children }: childrenProp) {
 			setCartProducts((prev) =>
 				prev.map((product, index) =>
 					index === ItemAlreadyExist
-						? { ...product, numberOfItems: ++newItem.numberOfItems }
+						? { ...product, numberOfItems: newItem.numberOfItems + 1 }
 						: product
 				)
 			);
