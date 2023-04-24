@@ -45,9 +45,9 @@ function Sidebar({ setIsOpenCart, isOpenCart }: navType) {
 					<IoMdCart size={25} />
 					<div className={sideBarStyles.before}>{cartProducts.length}</div>
 				</div>
-				<div className={sideBarStyles.effects}>
+				<Link href="/checkout" className={sideBarStyles.effects}>
 					<RiShoppingBag3Fill size={25} />
-				</div>
+				</Link>
 			</div>
 		</div>
 	);
