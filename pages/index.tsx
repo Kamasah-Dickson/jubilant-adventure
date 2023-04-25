@@ -2,11 +2,11 @@ import { useContext } from "react";
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import SingleItem from "@/components/SingleItem";
-import { RiMenu4Line } from "react-icons/ri";
-import sideBarStyles from "../styles/sidebar.module.scss";
 import { globalContext } from "@/context/appContext";
 import { BiSearchAlt } from "react-icons/bi";
 import { useForm } from "react-hook-form";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 // import { GetStaticProps } from "next";
 // import axios from "axios";
 
@@ -38,8 +38,7 @@ const Home = () => {
 		search: string;
 	};
 
-	const { setShowNav, products, addItemToCart, productCounts } =
-		useContext(globalContext);
+	const { products, addItemToCart, productCounts } = useContext(globalContext);
 	const { register, handleSubmit } = useForm<Inputs>();
 
 	const customHandleSubmit = (data: Inputs) => {
@@ -59,15 +58,7 @@ const Home = () => {
 			</Head>
 
 			<div>
-				<div
-					onClick={() => setShowNav(true)}
-					className={sideBarStyles.hamburgerAndtitle}
-				>
-					<div className={sideBarStyles.hamburger}>
-						<RiMenu4Line size={25} />
-					</div>
-					<h1>{`Let's shop!`}</h1>
-				</div>
+				<Header title="Let's shop!" />
 				<div className={styles.search}>
 					<label htmlFor="search">Search Item</label>
 					<form
@@ -106,6 +97,7 @@ const Home = () => {
 					))}
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 };
