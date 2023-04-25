@@ -98,24 +98,24 @@ function AppContext({ children }: childrenProp) {
 		}
 	}
 
+	const contextValues = {
+		products,
+		addItemToCart,
+		setCartProducts,
+		cartProducts,
+		setProducts,
+		showNav,
+		setShowNav,
+		removeItemFromCart,
+		setProductCounts,
+		productCounts,
+		handleUpdateProductCount,
+		increaseItemCount,
+		decreaseItemCount,
+	};
+
 	return (
-		<globalContext.Provider
-			value={{
-				products,
-				addItemToCart,
-				setCartProducts,
-				cartProducts,
-				setProducts,
-				showNav,
-				setShowNav,
-				removeItemFromCart,
-				setProductCounts,
-				productCounts,
-				handleUpdateProductCount,
-				increaseItemCount,
-				decreaseItemCount,
-			}}
-		>
+		<globalContext.Provider value={contextValues}>
 			{children}
 		</globalContext.Provider>
 	);
