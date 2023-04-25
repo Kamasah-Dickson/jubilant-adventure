@@ -167,6 +167,7 @@
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 			gap: 20px;
+			margin-bottom: 1rem;
 			.singleCard {
 				display: flex;
 				flex-direction: column;
@@ -176,9 +177,11 @@
 				background-color: c.$white;
 				border-radius: 20px;
 				box-shadow: 0 5px 14px -10px rgba(0, 0, 0, 0.2);
+				transition: 0.3s ease;
 				cursor: pointer;
 				&:hover {
 					box-shadow: 0 5px 14px -7px rgba(0, 0, 0, 0.3);
+					transform: scale(1.01);
 				}
 				.singleCardStyle {
 					display: grid;
