@@ -26,31 +26,18 @@ export default function Cartproducts({ product }: IProduct) {
 				<IoIosCloseCircle size={30} />
 			</div>
 			<div className={styles.CartCardStyle}>
-				<Image priority src={product?.image} width={150} height={150} alt="" />
+				<Image priority src={product?.image} width={200} height={250} alt="" />
 			</div>
 			<div style={{ marginBottom: "1rem" }}>
-				<p
-					style={{
-						marginBottom: ".3rem",
-						fontWeight: "700",
-						fontSize: "1.3rem",
-					}}
-				>
+				<p className={styles.title}>
 					Macbook pro 16
 					{/* {product.title} */}
 				</p>
-				<p
-					style={{
-						fontWeight: "400",
-						color: "grey",
-						fontSize: ".8rem",
-						marginBottom: ".5rem",
-					}}
-				>
+				<p className={styles.subtitle}>
 					{/* Silve-M1 Pro */}
 					{product?.title}
 				</p>
-				<p style={{ fontSize: "1.2rem" }}>$3249.99</p>
+				<p className={styles.price}>$3249.99</p>
 				<div className={styles.inputAndButtons}>
 					<button
 						type="button"

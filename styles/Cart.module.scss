@@ -1,4 +1,4 @@
-@use "./colors.module.scss" as c;
+@use "./colors.module.scss";
 
 .cartItems {
 	display: grid;
@@ -7,7 +7,7 @@
 
 	.cartCard {
 		border-radius: 15px;
-		background-color: c.$white;
+		background-color: var(--white);
 		box-shadow: 0px 3px 15px -10px rgba(0, 0, 0, 0.4);
 		padding: 1rem;
 		gap: 5px;
@@ -17,6 +17,26 @@
 		justify-content: space-between;
 		position: relative;
 		user-select: none;
+
+		.title {
+			margin-bottom: 0.3rem;
+			font-weight: 700;
+			font-size: 1.4rem;
+			color: var(--black);
+		}
+
+		.subtitle {
+			font-weight: 400;
+			color: grey;
+			font-size: 0.8rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.price {
+			font-size: 1.2rem;
+			color: var(--black);
+		}
+
 		&:hover {
 			box-shadow: 0px 3px 13px -7px rgba(0, 0, 0, 0.4);
 		}
@@ -24,6 +44,7 @@
 			position: absolute;
 			top: 0.7rem;
 			right: 0.7rem;
+			color: var(--black);
 			cursor: pointer;
 			&:active {
 				transform: scale(1.07);
@@ -33,16 +54,17 @@
 			display: flex;
 			align-items: center;
 			max-width: 250px;
-			background-color: c.$black;
 			border-radius: 15px;
+			overflow: hidden;
+			border: 2px solid black;
 			overflow: hidden;
 			margin-top: 1rem;
 			height: 30px;
 			.plusButton {
 				flex: 1;
-				background-color: c.$black;
-				color: c.$white;
-				border: 1px solid c.$black;
+				background-color: black;
+				color: white;
+				border: none;
 				outline: none;
 				height: 100%;
 				font-size: 1.2rem;
@@ -52,9 +74,9 @@
 				}
 			}
 			.minusButton {
-				background-color: c.$black;
-				color: c.$white;
-				border: 1px solid c.$black;
+				background-color: black;
+				color: white;
+				border: none;
 				outline: none;
 				flex: 1;
 				height: 100%;
@@ -65,7 +87,8 @@
 				}
 			}
 			.priceInput {
-				border: 1px solid c.$black;
+				border: 1px solid var(--white);
+				background-color: white;
 				outline: none;
 				flex: 5;
 				width: 140px;
