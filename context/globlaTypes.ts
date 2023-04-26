@@ -14,6 +14,7 @@ export type productCounts = {
 }[];
 export interface globalContextProp {
 	showNav: boolean;
+	darkmode: boolean;
 	setShowNav: Dispatch<SetStateAction<boolean>>;
 	setProducts: Dispatch<
 		SetStateAction<
@@ -35,6 +36,7 @@ export interface globalContextProp {
 	setCartProducts: Dispatch<SetStateAction<CartType[]>>;
 	cartProducts: [] | CartType[];
 	setProductCounts: Dispatch<SetStateAction<Record<string, number>>>;
+	setDarkmode: Dispatch<SetStateAction<boolean>>;
 	productCounts: Record<string, number>;
 	addItemToCart(newProduct: CartType): void;
 	removeItemFromCart(newProduct: CartType): void;

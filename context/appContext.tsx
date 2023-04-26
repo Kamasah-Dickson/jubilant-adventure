@@ -20,12 +20,16 @@ export const globalContext = createContext<globalContextProp>({
 	handleUpdateProductCount: (number) => number,
 	increaseItemCount: (number) => number,
 	decreaseItemCount: (number) => number,
+	setDarkmode: (boolean) => boolean,
+	darkmode: true,
 });
 
 function AppContext({ children }: childrenProp) {
 	const [showNav, setShowNav] = useState(false);
 	const [products, setProducts] = useState<CartType[]>(commerce);
 	const [cartProducts, setCartProducts] = useState<CartType[]>([]);
+	const [darkmode, setDarkmode] = useState(true);
+
 	const [productCounts, setProductCounts] = useState<Record<string, number>>(
 		{}
 	);
@@ -112,6 +116,8 @@ function AppContext({ children }: childrenProp) {
 		handleUpdateProductCount,
 		increaseItemCount,
 		decreaseItemCount,
+		darkmode,
+		setDarkmode,
 	};
 
 	return (
