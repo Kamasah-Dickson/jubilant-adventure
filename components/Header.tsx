@@ -1,5 +1,5 @@
 import { globalContext } from "@/context/appContext";
-import { useContext, Dispatch, useEffect, SetStateAction } from "react";
+import { useContext, useEffect } from "react";
 import { RiMenu4Line } from "react-icons/ri";
 import sideBarStyles from "../styles/sidebar.module.scss";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
