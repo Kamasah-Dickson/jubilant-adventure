@@ -10,7 +10,7 @@ export const globalContext = createContext<globalContextProp>({
 	showNav: true,
 	setShowNav: () => {},
 	setProducts: () => {},
-	products: commerce,
+	products: [],
 	setCartProducts: () => {},
 	cartProducts: [],
 	addItemToCart: () => {},
@@ -38,6 +38,9 @@ function AppContext({ children }: childrenProp) {
 		const ItemAlreadyExist = cartProducts.findIndex(
 			(product) => product.id === newProduct.id
 		);
+		const ItemAlreadyExist2 = cartProducts.find(
+			(product) => product.id === newProduct.id
+		);
 
 		const newProductCount = productCounts[newProduct.id] || 0;
 
@@ -47,6 +50,7 @@ function AppContext({ children }: childrenProp) {
 			price: newProduct.price,
 			image: newProduct.image,
 			numberOfItems: newProductCount + 1,
+			description: newProduct.description,
 		};
 		if (ItemAlreadyExist === -1) {
 			setCartProducts((prev) => [newItem, ...prev]);
@@ -56,9 +60,9 @@ function AppContext({ children }: childrenProp) {
 			}));
 		} else {
 			setCartProducts((prev) =>
-				prev.map((product, index) =>
-					index === ItemAlreadyExist
-						? { ...product, numberOfItems: newItem.numberOfItems + 1 }
+				prev.map((product: CartType, index) =>
+					product.id === ItemAlreadyExist2?.id
+						? { ...newItem, numberOfItems: newItem.numberOfItems + 1 }
 						: product
 				)
 			);
