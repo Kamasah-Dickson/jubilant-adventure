@@ -10,6 +10,7 @@ import MobileNav from "@/components/mobileNav";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import NextNProgress from "nextjs-progressbar";
 import Cart from "@/components/Cart";
+import Header from "@/components/Header";
 
 function App({ Component, pageProps }: AppProps) {
 	const isSmall = useMediaQuery("(max-width:768px)");
@@ -17,20 +18,22 @@ function App({ Component, pageProps }: AppProps) {
 
 	return (
 		<AppContext>
-			<div className={styles.dashboard}>
-				{isSmall ? (
-					<MobileNav setIsOpenCart={setIsOpenCart} isOpenCart={isOpenCart} />
-				) : (
-					<Sidebar setIsOpenCart={setIsOpenCart} isOpenCart={isOpenCart} />
-				)}
-				<main className={styles.main}>
-					<Layout>
-						<Component {...pageProps} />
-						<NextNProgress color="#583cd8" height={5} />
-					</Layout>
-				</main>
-				<Cart isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
-			</div>
+			<>
+				<div className={styles.dashboard}>
+					{isSmall ? (
+						<MobileNav setIsOpenCart={setIsOpenCart} isOpenCart={isOpenCart} />
+					) : (
+						<Sidebar setIsOpenCart={setIsOpenCart} isOpenCart={isOpenCart} />
+					)}
+					<main className={styles.main}>
+						<Layout>
+							<Component {...pageProps} />
+							<NextNProgress color="#583cd8" height={5} />
+						</Layout>
+					</main>
+					<Cart isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
+				</div>
+			</>
 		</AppContext>
 	);
 }

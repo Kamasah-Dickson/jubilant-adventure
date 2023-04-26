@@ -52,7 +52,7 @@ function SingleProductPage() {
 									onClick={() => addItemToCart(thisProductDetails)}
 									className={styles.addTocart}
 								>
-									<BsFillBagPlusFill size={20} color="white" />
+									<BsFillBagPlusFill size={20} className={styles.icon2} />
 									{count > 0 && <div className={styles.before}>{count}</div>}
 								</div>
 							</div>

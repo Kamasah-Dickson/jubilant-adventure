@@ -1,7 +1,23 @@
-$white: #fff;
-$black: #000;
-$purple: #583cd8;
-$bg-color: #ededed;
-$pink: #ad0fb3;
-$crimson: crimson;
-$grey: grey;
+.light-mode {
+	--white: #fff;
+	--black: #000;
+	--purple: #583cd8;
+	// --bg-color: #ededed;
+	--bg-color: #cddd;
+	--pink: #ad0fb3;
+	--crimson: crimson;
+	--grey: grey;
+	--notify: rgb(35, 21, 228);
+}
+
+.dark-mode {
+	--white: #333;
+	--icon: white;
+	--notify: bisque;
+	--black: white;
+	--purple: #583cd8;
+	--bg-color: #202020;
+	--pink: #ad0fb3;
+	--crimson: crimson;
+	--grey: grey;
+}
