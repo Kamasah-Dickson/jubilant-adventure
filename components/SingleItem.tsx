@@ -30,7 +30,15 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 				as={`product/${product.id}`}
 				className={styles.singleCardStyle}
 			>
-				<Image src={product.image} width={350} height={350} alt="" />
+				<div
+					style={{
+						width: "300px",
+						height: "300px",
+						borderRadius: "20px",
+					}}
+				>
+					<Image priority src={product.image} width={300} height={300} alt="" />
+				</div>
 			</Link>
 			<div
 				style={{
@@ -46,7 +54,7 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 							price: product.price,
 							description: product.description,
 							numberOfItems: product.numberOfItems,
-							image: product.image.src,
+							image: product.image,
 							title: product.title,
 						},
 					}}
@@ -61,11 +69,12 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 							marginBottom: ".5rem",
 						}}
 					>
-						Silve-M1 Pro
+						{/* Silve-M1 Pro */}
+						{product.description.slice(0, 30) + "..."}
 					</p>
 				</Link>
 				<div className={styles.price}>
-					<p>{product.price}</p>
+					<p>${product.price}</p>
 					<div
 						onClick={() => addItemToCart(product)}
 						className={styles.addTocart}
