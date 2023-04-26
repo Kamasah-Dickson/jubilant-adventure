@@ -1,0 +1,162 @@
+@use "./colors.module.scss";
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.alert {
+	font-size: clamp(0.5rem, 0.3rem + 2vw, 1.1rem);
+	background-color: rgba(220, 20, 60, 0.308);
+	padding: 1rem;
+	border-radius: 12px;
+	font-weight: 400;
+	border: 2px solid crimson;
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 5px;
+	color: var(--black);
+	.notify {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+	.okay {
+		font-size: 1rem;
+		color: var(--notify);
+		cursor: pointer;
+		font-weight: 500;
+		user-select: none;
+		&:active {
+			transform: scale(1.07);
+		}
+	}
+}
+
+.singleCard {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	align-items: center;
+	max-width: 62rem;
+	width: 100%;
+	margin-inline: auto;
+	background-color: var(--white);
+	border-radius: 25px;
+	box-shadow: 0px 2px 10px -8px rgba(0, 0, 0, 0.3);
+	.cardImage {
+		width: 100%;
+		height: 100%;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.productDescriptions {
+		padding: 2rem;
+		@media (max-width: 400px) {
+			padding: 1rem;
+		}
+		.title {
+			font-size: clamp(1rem, 1rem + 2vw, 3rem);
+			margin-bottom: 0.3rem;
+			font-weight: 700;
+			color: var(--black);
+		}
+		.subtitle {
+			font-size: clamp(0.7rem, 0.5rem + 2vw, 1.5rem);
+			margin-bottom: 0.6rem;
+			font-weight: 300;
+			color: var(--black);
+		}
+		.price {
+			font-weight: 400;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 250px;
+			gap: 10;
+			color: var(--purple);
+			font-size: 1.2rem;
+			font-weight: 500;
+			.quantity {
+				font-weight: 500;
+				color: var(--black);
+			}
+		}
+	}
+}
+.proceed {
+	padding: 1rem 1.5rem;
+	font-weight: 400;
+	font-size: 1.2rem;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	background-color: var(--black);
+	max-width: 400px;
+	width: 100%;
+	margin-inline: auto;
+	color: var(--white);
+	transition: background 0s ease;
+	&:hover {
+		background: linear-gradient(45deg, var(--purple), var(--pink));
+		color: white;
+	}
+	&:active {
+		transform: scale(1.03);
+	}
+}
+
+.inputAndButtons {
+	display: flex;
+	align-items: center;
+	max-width: 250px;
+	background-color: var(--black);
+	border-radius: 15px;
+	overflow: hidden;
+	margin-top: 1rem;
+	height: 35px;
+	border: 1px solid black;
+
+	.plusButton {
+		flex: 1;
+		background-color: black;
+		color: white;
+		border: none;
+		outline: none;
+		height: 100%;
+		font-size: 1.2rem;
+		cursor: pointer;
+		&:active {
+			transform: scale(1.07);
+		}
+	}
+	.minusButton {
+		background-color: black;
+		color: white;
+		border: none;
+		outline: none;
+		flex: 1;
+		height: 100%;
+		font-size: 1.2rem;
+		cursor: pointer;
+		&:active {
+			transform: scale(1.07);
+		}
+	}
+	.priceInput {
+		border: 1px solid var(--white);
+		background-color: white;
+		outline: none;
+		flex: 5;
+		width: 140px;
+		height: 100%;
+		padding-inline: 0.2rem;
+		font-size: 1rem;
+		text-align: center;
+		font-weight: 500;
+	}
+}
