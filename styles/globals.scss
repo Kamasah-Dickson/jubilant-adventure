@@ -1,4 +1,4 @@
-@use "./colors.module.scss" as c;
+@use "./colors.module.scss";
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -11,7 +11,8 @@ body {
 	max-width: 100vw;
 	overflow-x: hidden;
 	min-height: 100vh;
-	background-color: c.$bg-color;
+	background-color: var(--bg-color);
+	transition: all 0s ease;
 }
 
 a {
@@ -21,6 +22,7 @@ a {
 
 h1 {
 	font-size: 1.4rem;
+	color: var(--black);
 	margin-left: 0.5rem;
 	@media (min-width: 768px) {
 		font-size: 4.3rem;
@@ -40,8 +42,8 @@ h2 {
 }
 
 footer {
-	background-color: c.$white;
-	color: c.$black;
+	background-color: var(--white);
+	color: var(--black);
 	padding: 1.5rem;
 	border-radius: 10px;
 	display: flex;

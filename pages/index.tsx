@@ -82,7 +82,7 @@ const Home = () => {
 								background: "transparent",
 							}}
 						>
-							<BiSearchAlt size={25} />
+							<BiSearchAlt size={25} className={styles.icon} />
 						</button>
 					</form>
 				</div>

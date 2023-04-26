@@ -1,4 +1,4 @@
-@use "./colors.module.scss" as c;
+@use "./colors.module.scss";
 
 .dashboard {
 	display: flex;
@@ -16,7 +16,7 @@
 		user-select: none;
 		box-shadow: 1px 1px 10px -8px rgba(0, 0, 0, 0.603);
 		border-radius: 5px;
-		background-color: c.$white;
+		background-color: var(--white);
 		padding: 1.5rem 0.5rem;
 		z-index: 5;
 	}
@@ -31,9 +31,9 @@
 		}
 		&::-webkit-scrollbar-thumb {
 			border-radius: 10px;
-			background-color: c.$purple;
+			background-color: var(--purple);
 			&:hover {
-				background: linear-gradient(c.$pink, c.$purple);
+				background: linear-gradient(var(--pink), var(--purple));
 			}
 		}
 		@media (max-width: 768px) {
@@ -44,7 +44,7 @@
 			width: 75%;
 			height: 100%;
 			overflow-y: auto;
-			background-color: c.$bg-color;
+			background-color: var(--bg-color);
 		}
 		.closeCartContainer {
 			display: flex;
@@ -57,6 +57,14 @@
 			z-index: 4;
 			background-color: transparent;
 			backdrop-filter: blur(4px);
+
+			.title {
+				margin-bottom: 0.3rem;
+				font-weight: 700;
+				// font-size: 1.4rem;
+				color: var(--black);
+			}
+
 			.closeCart {
 				cursor: pointer;
 				&:active {
@@ -71,10 +79,11 @@
 			gap: 0.6rem;
 			margin-block: 1rem;
 			.checkoutBtn {
-				background-color: c.$black;
-				color: c.$white;
+				background-color: var(--black);
+				color: var(--white);
 				width: 100%;
 				border: none;
+				font-weight: 500;
 				outline: none;
 				padding: 1rem;
 				font-size: 0.9rem;
@@ -85,9 +94,10 @@
 				}
 			}
 			.removeAll {
-				background-color: c.$crimson;
-				color: c.$white;
+				background-color: var(--crimson);
+				color: white;
 				width: 100%;
+				font-weight: 500;
 				border: none;
 				outline: none;
 				padding: 1rem;
@@ -103,19 +113,20 @@
 
 	.main {
 		width: 100%;
-		padding: 20px;
+		padding: 1.25rem;
 		flex: 3;
 		overflow-y: auto;
+		@media (max-width: 400px) {
+			padding: 0.6rem;
+		}
+
 		&::-webkit-scrollbar {
 			width: 12px;
 			background-color: #05036e15;
 		}
 		&::-webkit-scrollbar-thumb {
 			border-radius: 10px;
-			background-color: c.$purple;
-			&:hover {
-				background: linear-gradient(c.$pink, c.$purple);
-			}
+			background: linear-gradient(var(--pink), var(--purple));
 		}
 
 		.search {
@@ -128,7 +139,7 @@
 			label {
 				margin-bottom: 0.6rem;
 				font-size: 15px;
-				color: c.$grey;
+				color: var(--grey);
 				font-weight: 400;
 			}
 			.input {
@@ -137,13 +148,15 @@
 				justify-content: center;
 				gap: 5;
 				border-radius: 10px;
-				background-color: c.$white;
+				background-color: var(--white);
 				overflow: hidden;
 				padding-inline: 0.7rem;
 				input {
 					height: 100%;
 					width: 100%;
 					padding-block: 1rem;
+					background-color: var(--white);
+					color: var(--black);
 					border-radius: 10px;
 					border: none;
 					outline: none;
@@ -161,6 +174,10 @@
 						box-shadow: 0px 5px 14px -7px rgba(0, 0, 0, 0.2);
 					}
 				}
+
+				.icon {
+					color: var(--black);
+				}
 			}
 		}
 		.mainLayout {
@@ -174,10 +191,9 @@
 				justify-content: flex-end;
 				user-select: none;
 				align-items: flex-start;
-				background-color: c.$white;
+				background-color: var(--white);
 				border-radius: 20px;
 				box-shadow: 0 5px 14px -10px rgba(0, 0, 0, 0.2);
-				transition: 0.3s ease;
 				cursor: pointer;
 				&:hover {
 					box-shadow: 0 5px 14px -7px rgba(0, 0, 0, 0.3);
@@ -188,18 +204,36 @@
 					place-content: center;
 					width: 100%;
 					height: 100%;
+					transition: 0.3s ease;
 					img {
-						transition: 0.3s ease;
 						user-select: none;
 						width: 100%;
+						height: 100%;
 					}
 				}
 				p {
 					text-align: left;
 				}
 
+				.title {
+					margin-bottom: 0.4rem;
+					font-weight: 700;
+					font-size: 1.2rem;
+					color: var(--black);
+				}
+
+				.price {
+					margin-bottom: 0.4rem;
+					font-weight: 400;
+					font-size: 1.2rem;
+					color: var(--black);
+					display: flex;
+					align-items: center;
+					gap: 20px;
+				}
+
 				.addTocart {
-					background-color: c.$black;
+					background-color: var(--black);
 					padding: 0.4rem 0.6rem;
 					border-radius: 7px;
 					cursor: pointer;
@@ -207,14 +241,18 @@
 					&:active {
 						transform: scale(1.07);
 					}
+
+					.icon2 {
+						color: var(--white);
+					}
 					.before {
 						position: absolute;
 						top: -8px;
 						right: -7px;
 						width: 20px;
 						height: 20px;
-						background-color: c.$purple;
-						color: c.$white;
+						background-color: var(--purple);
+						color: white;
 						text-align: center;
 						display: grid;
 						place-content: center;
@@ -236,10 +274,10 @@
 		width: 70px;
 		transition: translate 0.3s ease;
 		height: calc(100vh - 2rem);
-		background-color: c.$white;
+		background-color: var(--white);
 		box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.74);
 		border-radius: 8px;
-		background-color: c.$white;
+		background-color: var(--white);
 		gap: 25px;
 		padding: 1.5rem 0.5rem;
 		z-index: 5;
