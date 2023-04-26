@@ -1,12 +1,18 @@
-import { useContext } from "react";
+import { useContext, Dispatch, SetStateAction } from "react";
 import Cartproducts from "@/components/SingleCartproduct";
 import { IoIosCloseCircle } from "react-icons/io";
 import cartStyles from "@/styles/Cart.module.scss";
 import styles from "@/styles/Home.module.scss";
 import { globalContext } from "@/context/appContext";
 import { navType } from "./mobileNav";
+import Link from "next/link";
 
-function Cart({ setIsOpenCart, isOpenCart }: navType) {
+interface Icart {
+	isOpenCart: boolean;
+	setIsOpenCart: Dispatch<SetStateAction<boolean>>;
+}
+
+function Cart({ setIsOpenCart, isOpenCart }: Icart) {
 	const { cartProducts, setCartProducts, setProductCounts } =
 		useContext(globalContext);
 
@@ -24,7 +30,7 @@ function Cart({ setIsOpenCart, isOpenCart }: navType) {
 			style={isOpenCart ? { display: "none" } : { display: "block" }}
 		>
 			<div className={styles.closeCartContainer}>
-				<h2>Your Cart</h2>
+				<h2 className={styles.title}>Your Cart</h2>
 				<div onClick={() => setIsOpenCart(true)} className={styles.closeCart}>
 					<IoIosCloseCircle color="crimson" size={40} />
 				</div>
@@ -37,6 +43,7 @@ function Cart({ setIsOpenCart, isOpenCart }: navType) {
 						placeContent: "center",
 						height: "100%",
 						fontSize: "1.5rem",
+						color: "var(--black)",
 					}}
 				>
 					Your cart is empty🙁
@@ -51,9 +58,11 @@ function Cart({ setIsOpenCart, isOpenCart }: navType) {
 						})}
 					</div>
 					<div className={styles.btns}>
-						<button type="button" className={styles.checkoutBtn}>
-							Checkout
-						</button>
+						<Link href="/checkout">
+							<button type="button" className={styles.checkoutBtn}>
+								Checkout
+							</button>
+						</Link>
 						<button
 							type="button"
 							onClick={handleRemove}
