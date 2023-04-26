@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import { CartType } from "@/context/globlaTypes";
 
 export default async function handler(
 	req: NextApiRequest,
@@ -8,15 +9,15 @@ export default async function handler(
 ) {
 	if (req.method === "POST") {
 		try {
+			const { lineItems } = req.body;
+
+			if (!lineItems) {
+				return res.status(404).json({ error: "Bad request" });
+			}
+
 			// Create Checkout Sessions from body params.
 			const session = await stripe.checkout.sessions.create({
-				line_items: [
-					{
-						// Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-						price: "{{PRICE_ID}}",
-						quantity: 1,
-					},
-				],
+				line_items: lineItems,
 				mode: "payment",
 				success_url: `${req.headers.origin}/?success=true`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
