@@ -29,15 +29,9 @@ export default function Cartproducts({ product }: IProduct) {
 				<Image priority src={product?.image} width={200} height={250} alt="" />
 			</div>
 			<div style={{ marginBottom: "1rem" }}>
-				<p className={styles.title}>
-					Macbook pro 16
-					{/* {product.title} */}
-				</p>
-				<p className={styles.subtitle}>
-					{/* Silve-M1 Pro */}
-					{product?.title}
-				</p>
-				<p className={styles.price}>$3249.99</p>
+				<p className={styles.title}>{product?.title}</p>
+				<p className={styles.subtitle}>{product?.description?.slice(0, 55)}</p>
+				<p className={styles.price}>${product.price}</p>
 				<div className={styles.inputAndButtons}>
 					<button
 						type="button"
