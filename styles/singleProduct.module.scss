@@ -1,4 +1,4 @@
-@use "../styles/colors.module.scss" as c;
+@use "../styles/colors.module.scss";
 
 .mainContainer {
 	display: grid;
@@ -9,7 +9,7 @@
 	.singleCard {
 		display: flex;
 		flex-direction: column;
-		background-color: c.$white;
+		background-color: var(--white);
 		box-shadow: 0px 1px 15px -9px rgba(0, 0, 0, 0.2);
 		padding: 1rem;
 		gap: 0.7rem;
@@ -28,6 +28,8 @@
 			.title {
 				font-size: 2.3rem;
 				line-height: 1.1;
+				font-weight: 700;
+				color: var(--black);
 			}
 			.price {
 				display: flex;
@@ -35,8 +37,9 @@
 				gap: 20px;
 				font-weight: 500;
 				font-size: 1.1rem;
+				color: var(--black);
 				.addTocart {
-					background-color: c.$black;
+					background-color: var(--black);
 					padding: 0.4rem 0.6rem;
 					border-radius: 7px;
 					cursor: pointer;
@@ -44,14 +47,18 @@
 					&:active {
 						transform: scale(1.07);
 					}
+
+					.icon2 {
+						color: var(--white);
+					}
 					.before {
 						position: absolute;
 						top: -8px;
 						right: -7px;
 						width: 20px;
 						height: 20px;
-						background-color: c.$purple;
-						color: c.$white;
+						background-color: var(--purple);
+						color: white;
 						text-align: center;
 						display: grid;
 						place-content: center;
@@ -65,9 +72,10 @@
 			}
 			.subtitle {
 				font-weight: 400;
-				color: c.$grey;
+				color: var(--grey);
 				font-size: 0.9rem;
 				margin-block: 0.5rem;
+				font-weight: 400;
 			}
 		}
 		@media (min-width: 600px) {
@@ -91,11 +99,12 @@
 	}
 
 	.description {
-		background-color: c.$white;
+		background-color: var(--white);
 		box-shadow: 0px 1px 15px -9px rgba(0, 0, 0, 0.2);
 		padding: 5px;
 		padding: 1.3rem;
 		border-radius: 20px;
 		max-width: 500px;
+		color: var(--black);
 	}
 }

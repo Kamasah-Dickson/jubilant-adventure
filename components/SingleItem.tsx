@@ -52,15 +52,7 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 					}}
 					as={`product/${product.id}`}
 				>
-					<p
-						style={{
-							marginBottom: ".4rem",
-							fontWeight: "700",
-							fontSize: "1.2rem",
-						}}
-					>
-						{product.title}
-					</p>
+					<p className={styles.title}>{product.title}</p>
 					<p
 						style={{
 							fontWeight: "400",
@@ -72,13 +64,13 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 						Silve-M1 Pro
 					</p>
 				</Link>
-				<div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+				<div className={styles.price}>
 					<p>{product.price}</p>
 					<div
 						onClick={() => addItemToCart(product)}
 						className={styles.addTocart}
 					>
-						<BsFillBagPlusFill size={15} color="white" />
+						<BsFillBagPlusFill size={20} className={styles.icon2} />
 						{count > 0 && <div className={styles.before}>{count}</div>}
 					</div>
 				</div>
