@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 import SingleItem from "@/components/SingleItem";
@@ -7,44 +7,62 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useForm } from "react-hook-form";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import { GetStaticProps } from "next";
-// import axios from "axios";
+import { commerce } from "@/Data";
+import axios from "axios";
+import { CartType } from "@/context/globlaTypes";
 
-// type MyData = {
-// 	id: number;
-// 	title: string;
-// 	price: string;
-// 	description: string;
-// 	image: string;
-// };
-
-// export const getStaticProps: GetStaticProps = async () => {
-// 	const response = axios.get("https://fakestoreapi.com/products");
-// 	const data = (await response).data as MyData[];
-
-// 	return {
-// 		props: {
-// 			data,
-// 		},
-// 	};
-// };
-
-// interface IProducts {
-// 	data: MyData[];
-// }
+type MyData = {
+	id: number;
+	title: string;
+	price: string;
+	description: string;
+	image: string;
+};
 
 const Home = () => {
 	type Inputs = {
 		search: string;
 	};
 
-	const { products, addItemToCart, productCounts } = useContext(globalContext);
-	const { register, handleSubmit } = useForm<Inputs>();
+	const { products, addItemToCart, productCounts, setProducts } =
+		useContext(globalContext);
+	const { register, handleSubmit, watch } = useForm<Inputs>();
+	const [searchResultsLoading, setsearchResultsLoading] = useState(false);
+	const [searchResultsError, setsearchResultsError] = useState(false);
+	const searchValue = watch("search");
 
-	const customHandleSubmit = (data: Inputs) => {
-		if (data.search.length > 3) {
+	async function searchData(searchQuery: string) {
+		try {
+			setProducts([]);
+			setsearchResultsError(false);
+			setsearchResultsLoading(true);
+			const response = axios.get(`/api/search?q=${searchQuery}`);
+			const responseProducts = (await response).data as MyData[];
+
+			if (responseProducts.length == 0) {
+				setProducts(commerce);
+				alert("Please your request was not found");
+			} else {
+				setProducts(responseProducts);
+				console.log(responseProducts);
+			}
+		} catch (error: any) {
+			console.log(error);
+			setsearchResultsError(true);
+			setsearchResultsLoading(false);
+		} finally {
+			setsearchResultsLoading(false);
+		}
+	}
+
+	const customHandleSubmit = async (inputData: Inputs) => {
+		if (inputData.search.length > 3) {
+			const searchQuery = inputData.search.trim().toString();
+			searchData(searchQuery);
 		} else {
-			return;
+			setsearchResultsError(false);
+			setsearchResultsLoading(false);
+			setProducts(commerce);
 		}
 	};
 
@@ -71,7 +89,7 @@ const Home = () => {
 							autoComplete="off"
 							id="search"
 							name="search"
-							placeholder="Men's clothing, jewelery,electronics..."
+							placeholder="men's clothing, women's clothing, jewelery,electronics..."
 						/>
 						<button
 							type="submit"
@@ -87,17 +105,55 @@ const Home = () => {
 					</form>
 				</div>
 				<div className={styles.mainLayout}>
-					{products.map((data) => (
+					{searchResultsLoading && (
+						<h2
+							style={{
+								color: "var(--black)",
+								marginLeft: ".5rem",
+								textAlign: "center",
+							}}
+						>
+							Loading...
+						</h2>
+					)}
+					{searchResultsError && (
+						<div style={{ display: "flex", flexDirection: "column" }}>
+							<h2 style={{ color: "var(--crimson)", textAlign: "center" }}>
+								There was an error...
+							</h2>
+							<button
+								type="button"
+								style={{
+									backgroundColor: "var(--black)",
+									border: "none",
+									outline: "none",
+									color: "var(--white)",
+									padding: ".8rem",
+									maxWidth: "300px",
+									marginInline: "auto",
+									width: "100%",
+									marginTop: "5rem",
+									fontSize: "1.1rem",
+									fontWeight: "500",
+									cursor: "pointer",
+								}}
+								onClick={() => searchData(searchValue)}
+							>
+								Try Again
+							</button>
+						</div>
+					)}
+					{products.map((data: CartType) => (
 						<SingleItem
 							productCounts={productCounts}
 							addItemToCart={addItemToCart}
-							key={data.image + Math.random()}
+							key={data.id}
 							product={data}
 						/>
 					))}
 				</div>
 			</div>
-			<Footer />
+			{!searchResultsLoading && !searchResultsError && <Footer />}
 		</>
 	);
 };

@@ -10,7 +10,6 @@ import MobileNav from "@/components/mobileNav";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import NextNProgress from "nextjs-progressbar";
 import Cart from "@/components/Cart";
-import Header from "@/components/Header";
 
 function App({ Component, pageProps }: AppProps) {
 	const isSmall = useMediaQuery("(max-width:768px)");
