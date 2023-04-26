@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type CartType = {
-	id: number;
+	id: number | string;
 	title: string;
 	price: string;
 	image: string | any;
-	description?: string;
+	description: string;
 	numberOfItems?: number;
 };
 
@@ -16,22 +16,9 @@ export interface globalContextProp {
 	showNav: boolean;
 	darkmode: boolean;
 	setShowNav: Dispatch<SetStateAction<boolean>>;
-	setProducts: Dispatch<
-		SetStateAction<
-			{
-				image: any;
-				id: number;
-				price: string;
-				title: string;
-			}[]
-		>
-	>;
-	products: {
-		image: string;
-		id: number;
-		price: string;
-		title: string;
-	}[];
+
+	setProducts: Dispatch<SetStateAction<CartType[]>>;
+	products: CartType[];
 
 	setCartProducts: Dispatch<SetStateAction<CartType[]>>;
 	cartProducts: [] | CartType[];
