@@ -6,13 +6,6 @@ import { globalContext } from "@/context/appContext";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import { IoMdAlert } from "react-icons/io";
-import { loadStripe } from "@stripe/stripe-js";
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(
-	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-);
 
 function Checkout() {
 	const {
@@ -24,29 +17,6 @@ function Checkout() {
 	} = useContext(globalContext);
 	const [showNotify, setShowNotify] = useState(true);
 	const location = useRouter();
-
-	const StripeCheckout = async () => {
-		try {
-			const lineItems = cartProducts.map((product) => ({
-				price: product.id,
-				quantity: product.numberOfItems,
-			}));
-
-			const data = await fetch("api/checkout-session", {
-				method: "POST",
-				headers: {
-					"Context-Type": "application/json",
-				},
-				body: JSON.stringify({ lineItems }),
-			});
-
-			const response = await data.json();
-
-			console.log(response);
-		} catch (error: any) {
-			console.log(error.message);
-		}
-	};
 
 	useEffect(() => {
 		if (!cartProducts.length) {
@@ -60,17 +30,6 @@ function Checkout() {
 				location.push("/");
 			}
 		}
-		// Check to see if this is a redirect back from Checkout
-		const query = new URLSearchParams(window.location.search);
-		if (query.get("success")) {
-			console.log("Order placed! You will receive an email confirmation.");
-		}
-
-		if (query.get("canceled")) {
-			console.log(
-				"Order canceled -- continue to shop around and checkout when you’re ready."
-			);
-		}
 	}, [cartProducts.length, location]);
 
 	if (!cartProducts.length) {
@@ -78,11 +37,7 @@ function Checkout() {
 	}
 	return (
 		<>
-			<form
-				action="/api/checkout-session"
-				method="POST"
-				className={styles.wrapper}
-			>
+			<form className={styles.wrapper}>
 				<Header title="Let's Checkout" />
 				<p
 					className={styles.alert}
@@ -101,15 +56,21 @@ function Checkout() {
 						<>
 							<div className={styles.singleCard}>
 								<div className={styles.cardImage}>
-									<Image src={product.image} width={350} height={350} alt="" />
+									<Image
+										priority
+										src={product.image}
+										width={350}
+										height={350}
+										alt=""
+									/>
 								</div>
 								<div className={styles.productDescriptions}>
 									<div>
 										<p className={styles.title}>{product.title}</p>
-										<p className={styles.subtitle}>Silve-M1 Pro</p>
+										<p className={styles.subtitle}>{product.description}</p>
 									</div>
 									<div className={styles.price}>
-										<p>{product.price}</p>
+										<p>${product.price}</p>
 										<p className={styles.quantity}>
 											Quantity ~{productCounts[product.id]}
 										</p>
@@ -150,18 +111,14 @@ function Checkout() {
 					);
 				})}
 
-				{/* <Link hre> */}
-
 				<button
-					onSubmit={StripeCheckout}
-					type="submit"
+					onClick={() => window.alert("Page under construction")}
+					type="button"
 					role="link"
 					className={styles.proceed}
 				>
 					{`Let's Checkout`}
 				</button>
-
-				{/* </Link> */}
 
 				<Footer />
 			</form>
