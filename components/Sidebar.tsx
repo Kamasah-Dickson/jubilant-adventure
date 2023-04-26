@@ -10,10 +10,11 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { navType } from "./mobileNav";
 import { globalContext } from "@/context/appContext";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 function Sidebar({ setIsOpenCart, isOpenCart }: navType) {
 	const location = useRouter();
-	const { cartProducts } = useContext(globalContext);
+	const { cartProducts, setDarkmode, darkmode } = useContext(globalContext);
 
 	return (
 		<div className={styles.sidebar}>
@@ -35,19 +36,29 @@ function Sidebar({ setIsOpenCart, isOpenCart }: navType) {
 							: sideBarStyles.effects
 					}
 				>
-					<FaStore size={25} />
+					<FaStore size={25} className={sideBarStyles.icon} />
 				</Link>
 				<div
 					onClick={() => setIsOpenCart((prev) => !prev)}
-					className={sideBarStyles.effects}
-					style={isOpenCart ? {} : { backgroundColor: "black", color: "white" }}
+					className={isOpenCart ? sideBarStyles.effects : sideBarStyles.hover2}
 				>
-					<IoMdCart size={25} />
+					<IoMdCart size={25} className={sideBarStyles.icon} />
 					<div className={sideBarStyles.before}>{cartProducts.length}</div>
 				</div>
 				<Link href="/checkout" className={sideBarStyles.effects}>
-					<RiShoppingBag3Fill size={25} />
+					<RiShoppingBag3Fill size={25} className={sideBarStyles.icon} />
 				</Link>
+
+				<div
+					onClick={() => setDarkmode((prev) => !prev)}
+					className={sideBarStyles.icon}
+				>
+					{darkmode ? (
+						<MdOutlineLightMode color="white" size={25} cursor={"pointer"} />
+					) : (
+						<MdDarkMode size={25} cursor={"pointer"} />
+					)}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-@use "./colors.module.scss" as c;
+@use "./colors.module.scss";
 
 .topSidebar {
 	display: flex;
@@ -14,12 +14,19 @@
 	cursor: pointer;
 	padding: 0.8rem;
 	position: relative;
+
+	.icon {
+		color: var(--black);
+	}
 	&:active {
 		transform: scale(1.07);
 	}
 	&:hover {
-		background-color: c.$black;
+		background-color: black;
 		color: white;
+		.icon {
+			color: var(--icon);
+		}
 	}
 	.before {
 		position: absolute;
@@ -27,8 +34,8 @@
 		right: 5px;
 		width: 20px;
 		height: 20px;
-		background-color: c.$purple;
-		color: c.$white;
+		background-color: var(--purple);
+		color: white;
 		text-align: center;
 		display: grid;
 		place-content: center;
@@ -44,25 +51,87 @@
 	border-radius: 5px;
 	cursor: pointer;
 	padding: 0.8rem;
-	background-color: c.$purple;
-	color: c.$white;
+	background-color: var(--purple);
+	color: white;
+}
+.hover2 {
+	background-color: var(--purple);
+	color: white;
+	transition: 0.3s ease;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 0.8rem;
+	position: relative;
+
+	.icon {
+		color: var(--white2);
+	}
+	&:active {
+		transform: scale(1.07);
+	}
+	&:hover {
+		background-color: black;
+		color: white;
+		.icon {
+			color: var(--icon);
+		}
+
+		.before {
+			background-color: var(--purple);
+		}
+	}
+	.before {
+		position: absolute;
+		bottom: 9px;
+		right: 5px;
+		width: 20px;
+		height: 20px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		display: grid;
+		place-content: center;
+		border-radius: 100%;
+		font-size: 14px;
+		font-weight: 500;
+		box-shadow: 0px 2px 15px 3px rgba(35, 32, 184, 0.3);
+		user-select: none;
+	}
 }
 
 .close,
 .hamburger {
 	display: none;
 	cursor: pointer;
+	color: var(--black);
 	&:active {
 		transform: scale(1.07);
 	}
+}
+
+.white_icon {
+	color: var(--white);
 }
 
 .hamburgerAndtitle {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-block: 1rem;
 	z-index: 4;
+
+	.titleFlex {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		.icon {
+			margin-right: 5rem;
+			font-size: 1.8rem;
+			cursor: pointer;
+			user-select: none;
+		}
+	}
 
 	@media (max-width: (768px)) {
 		position: sticky;
@@ -76,6 +145,13 @@
 		.close,
 		.hamburger {
 			display: flex;
+		}
+
+		.titleFlex {
+			.icon {
+				margin: 0;
+				font-size: 1.3rem;
+			}
 		}
 	}
 }
