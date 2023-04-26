@@ -4,7 +4,6 @@ import { IoIosCloseCircle } from "react-icons/io";
 import cartStyles from "@/styles/Cart.module.scss";
 import styles from "@/styles/Home.module.scss";
 import { globalContext } from "@/context/appContext";
-import { navType } from "./mobileNav";
 import Link from "next/link";
 
 interface Icart {
