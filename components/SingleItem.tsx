@@ -3,7 +3,6 @@ import styles from "../styles/Home.module.scss";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { CartType } from "@/context/globlaTypes";
 import Link from "next/link";
-
 interface IProduct {
 	product: CartType;
 	productCounts: Record<string, number>;
@@ -17,7 +16,7 @@ function SingleItem({ product, productCounts, addItemToCart }: IProduct) {
 		<div className={styles.singleCard}>
 			<Link
 				href={{
-					pathname: `product/${product.id}`,
+					pathname: `/product/${product.id}`,
 					query: {
 						image: product.image.src,
 						id: product.id,
