@@ -28,7 +28,7 @@ function AppContext({ children }: childrenProp) {
 	const [showNav, setShowNav] = useState(false);
 	const [products, setProducts] = useState<CartType[]>(commerce);
 	const [cartProducts, setCartProducts] = useState<CartType[]>([]);
-	const [darkmode, setDarkmode] = useState(true);
+	const [darkmode, setDarkmode] = useState(false);
 
 	const [productCounts, setProductCounts] = useState<Record<string, number>>(
 		{}

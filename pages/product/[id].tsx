@@ -38,7 +38,6 @@ function SingleProductPage() {
 					<div className={styles.singleCard}>
 						<div className={styles.cardImage}>
 							<Image
-								// src={thisProductDetails.image}
 								src={products[index].image}
 								priority
 								width={350}
@@ -49,7 +48,7 @@ function SingleProductPage() {
 						<div className={styles.productDescriptions}>
 							<div>
 								<p className={styles.title}>
-									{thisProductDetails.title.slice(0, 35) + "..."}
+									{thisProductDetails.title.slice(0, 40) + "..."}
 								</p>
 								<p className={styles.subtitle}></p>
 							</div>
@@ -69,6 +68,7 @@ function SingleProductPage() {
 						<p>{thisProductDetails.description}</p>
 					</div>
 				</div>
+
 				<Footer />
 			</div>
 		</>
