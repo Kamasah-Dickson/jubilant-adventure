@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -13,7 +11,6 @@ pnpm dev
 ```
 
 ![localhost_3000_](https://user-images.githubusercontent.com/86136379/234742104-b94fa37c-0252-4c7b-956a-0d0550d50a74.png)
-
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
