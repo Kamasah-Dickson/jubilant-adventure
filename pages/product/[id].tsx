@@ -12,16 +12,15 @@ function SingleProductPage() {
 	const { query } = useRouter();
 	const { productCounts, addItemToCart, products } = useContext(globalContext);
 	const count = productCounts[String(query.id)] || 0;
+	let index = products.findIndex((product) => product.id == query.id);
 
-	let thisProductDetails: CartType = {
+	let thisProductDetails = {
 		id: Number(query.id),
-		image: query?.image,
+		image: products[index].image,
 		price: Number(query.price),
 		title: String(query.title),
 		description: String(query.description),
 	};
-
-	let index = products.findIndex((product) => product.id == query.id);
 
 	return (
 		<>
