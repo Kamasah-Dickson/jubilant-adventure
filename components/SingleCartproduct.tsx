@@ -17,6 +17,7 @@ export default function Cartproducts({ product }: IProduct) {
 		handleUpdateProductCount,
 		increaseItemCount,
 		decreaseItemCount,
+		getTotalPrice,
 	} = useContext(globalContext);
 
 	const count = productCounts[product.id] || 0;
@@ -36,7 +37,7 @@ export default function Cartproducts({ product }: IProduct) {
 					<button
 						type="button"
 						disabled={count === 0}
-						onClick={() => decreaseItemCount(product)}
+						onClick={() => (decreaseItemCount(product), getTotalPrice())}
 						className={styles.minusButton}
 					>
 						-

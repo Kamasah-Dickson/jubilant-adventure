@@ -6,6 +6,10 @@
 	gap: 20px;
 }
 
+.totalPice {
+	font-size: clamp(0.5rem, 0.3rem + 2vw, 1.2rem);
+}
+
 .alert {
 	font-size: clamp(0.5rem, 0.3rem + 2vw, 1.1rem);
 	background-color: rgba(220, 20, 60, 0.308);

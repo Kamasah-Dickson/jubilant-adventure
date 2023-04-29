@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 export type CartType = {
 	id: number | string;
 	title: string;
-	price: string;
+	price: number;
 	image: string | any;
 	description: string;
 	numberOfItems?: number;
@@ -16,7 +16,7 @@ export interface globalContextProp {
 	showNav: boolean;
 	darkmode: boolean;
 	setShowNav: Dispatch<SetStateAction<boolean>>;
-
+	getTotalPrice(): number;
 	setProducts: Dispatch<SetStateAction<CartType[]>>;
 	products: CartType[];
 

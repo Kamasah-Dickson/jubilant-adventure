@@ -14,6 +14,7 @@ function Checkout() {
 		handleUpdateProductCount,
 		increaseItemCount,
 		productCounts,
+		getTotalPrice,
 	} = useContext(globalContext);
 	const [showNotify, setShowNotify] = useState(true);
 	const location = useRouter();
@@ -51,6 +52,20 @@ function Checkout() {
 						Okay
 					</span>
 				</p>
+
+				{cartProducts.length > 0 && (
+					<p className={styles.totalPice} style={{ color: "var(--black)" }}>
+						Total Price:
+						<span
+							style={{
+								fontWeight: 700,
+								fontSize: "1.2rem",
+							}}
+						>
+							${getTotalPrice()}
+						</span>
+					</p>
+				)}
 				{cartProducts.map((product) => {
 					return (
 						<>

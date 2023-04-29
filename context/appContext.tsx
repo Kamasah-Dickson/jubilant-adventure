@@ -22,6 +22,7 @@ export const globalContext = createContext<globalContextProp>({
 	decreaseItemCount: (number) => number,
 	setDarkmode: (boolean) => boolean,
 	darkmode: true,
+	getTotalPrice: () => 0,
 });
 
 function AppContext({ children }: childrenProp) {
@@ -33,6 +34,14 @@ function AppContext({ children }: childrenProp) {
 	const [productCounts, setProductCounts] = useState<Record<string, number>>(
 		{}
 	);
+
+	function getTotalPrice(): number {
+		return cartProducts
+			.reduce((acc, item) => {
+				return acc + item.price * (productCounts[item.id] || 0);
+			}, 0)
+			.toFixed(2) as unknown as number;
+	}
 
 	function addItemToCart(newProduct: CartType) {
 		const ItemAlreadyExist = cartProducts.findIndex(
@@ -122,6 +131,7 @@ function AppContext({ children }: childrenProp) {
 		decreaseItemCount,
 		darkmode,
 		setDarkmode,
+		getTotalPrice,
 	};
 
 	return (

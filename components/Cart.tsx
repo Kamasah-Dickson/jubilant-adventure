@@ -12,7 +12,7 @@ interface Icart {
 }
 
 function Cart({ setIsOpenCart, isOpenCart }: Icart) {
-	const { cartProducts, setCartProducts, setProductCounts } =
+	const { cartProducts, getTotalPrice, setCartProducts, setProductCounts } =
 		useContext(globalContext);
 
 	function handleRemove() {
@@ -30,10 +30,19 @@ function Cart({ setIsOpenCart, isOpenCart }: Icart) {
 		>
 			<div className={styles.closeCartContainer}>
 				<h2 className={styles.title}>Your Cart</h2>
+
 				<div onClick={() => setIsOpenCart(true)} className={styles.closeCart}>
 					<IoIosCloseCircle color="crimson" size={40} />
 				</div>
 			</div>
+			{cartProducts.length > 0 && (
+				<p className={styles.totalPice} style={{ color: "var(--black)" }}>
+					Total Price:
+					<span style={{ fontWeight: 700, fontSize: "1.2rem" }}>
+						${getTotalPrice()}
+					</span>
+				</p>
+			)}
 			{cartProducts.length === 0 ? (
 				<p
 					style={{

@@ -36,6 +36,11 @@
 				background: linear-gradient(var(--pink), var(--purple));
 			}
 		}
+
+		.totalPice {
+			font-size: clamp(0.5rem, 0.3rem + 2vw, 1.2rem);
+			margin-block: 1.1rem;
+		}
 		@media (max-width: 768px) {
 			position: absolute;
 			top: 0;
@@ -61,7 +66,6 @@
 			.title {
 				margin-bottom: 0.3rem;
 				font-weight: 700;
-				// font-size: 1.4rem;
 				color: var(--black);
 			}
 
