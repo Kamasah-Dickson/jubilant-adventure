@@ -16,7 +16,7 @@ function SingleProductPage() {
 	let thisProductDetails: CartType = {
 		id: Number(query.id),
 		image: query.image,
-		price: String(query.price),
+		price: Number(query.price),
 		title: String(query.title),
 		description: String(query.description),
 	};
