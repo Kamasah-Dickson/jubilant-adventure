@@ -14,13 +14,15 @@ function SingleProductPage() {
 	const count = productCounts[String(query.id)] || 0;
 	let index = products.findIndex((product) => product.id == query.id);
 
-	let thisProductDetails = {
+	let thisProductDetails: CartType = {
 		id: Number(query.id),
-		image: products[index].image,
+		image: products[index]?.image,
 		price: Number(query.price),
 		title: String(query.title),
 		description: String(query.description),
 	};
+
+	console.log(thisProductDetails);
 
 	return (
 		<>
