@@ -37,7 +37,7 @@ export default function Cartproducts({ product }: IProduct) {
 					<button
 						type="button"
 						disabled={count === 0}
-						onClick={() => (decreaseItemCount(product), getTotalPrice())}
+						onClick={() => decreaseItemCount(product)}
 						className={styles.minusButton}
 					>
 						-
