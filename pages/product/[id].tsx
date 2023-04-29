@@ -37,7 +37,7 @@ function SingleProductPage() {
 					<div className={styles.singleCard}>
 						<div className={styles.cardImage}>
 							<Image
-								src={products[index].image}
+								src={products[index]?.image}
 								priority
 								width={350}
 								height={350}
