@@ -14,7 +14,7 @@ import { CartType } from "@/context/globlaTypes";
 type MyData = {
 	id: number;
 	title: string;
-	price: string;
+	price: number;
 	description: string;
 	image: string;
 };
@@ -38,8 +38,8 @@ const Home = () => {
 			setsearchResultsLoading(true);
 			const response = axios.get(`/api/search?q=${searchQuery}`);
 			const responseProducts = (await response).data as MyData[];
-
-			if (responseProducts.length == 0) {
+			console.log(responseProducts);
+			if (!responseProducts) {
 				setProducts(commerce);
 				alert("Please your request was not found");
 			} else {
