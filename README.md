@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 ```
 
+![localhost_3000_](https://user-images.githubusercontent.com/86136379/234742104-b94fa37c-0252-4c7b-956a-0d0550d50a74.png)
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
